@@ -2,16 +2,16 @@ def main():
     sair = False
 
     while not sair:
-        opcao = mostrar_menu()
+        opcao = menu()
 
         if opcao == "1":
-            total = valor_total_estoque()
+            total = total_estoque()
             print("Valor total do estoque: R$ {total:}")
 
         elif opcao == "2":
-            t = int(input("Quantidade mínima de itens para entrar na promoção(j) : "))
-            x = float(input("Porcentagem de desconto(c): "))
-            n = float(input("Porcentagem de venda prevista(x) : "))
+            j = int(input("Quantidade mínima de itens para entrar na promoção(j) : "))
+            c = float(input("Porcentagem de desconto(c): "))
+            x = float(input("Porcentagem de venda prevista(x) : "))
             queima_estoque(j, c, x)
 
         elif opcao == "3":
@@ -33,41 +33,41 @@ estoque = [
     {"nome": "Marcador de Texto", "quantidade": 55, "preco_unidade": 5.60}
 ]
 
-def valor_total_estoque():
+def total_estoque():
     total = 0
     for item in estoque:
         total += item["quantidade"] * item["preco_unit"]
     return total
 
-def queima_estoque(t_minimo, desconto, venda_prevista):
+def queima_estoque(minimo, desconto, venda_prevista):
     total_original = 0
     total_desconto = 0
     total_previsto = 0
 
     print("Itens incluídos na queima de estoque:")
     for item in estoque:
-        if item["quantidade"] >= t_minimo:
+        if item["quantidade"] >= minimo:
             valor = item["quantidade"] * item["preco_unit"]
             valor_desc = valor * (1 - desconto / 100)
             valor_venda = valor_desc * (venda_prevista / 100)
 
             total_original += valor
-            total_desconto += valor_desc
+            total_desconto += valor_desconto
             total_previsto += valor_venda
 
-            print(f"{item['nome']}: R$ {valor:.2f} → com desconto: R$ {valor_desc:} → previsão de venda: R$ {valor_venda:}")
+            print(f"{item['nome']}: R$ {valor:.2f} → com desconto: R$ {valor_desconto:} → previsão de venda: R$ {valor_venda:}")
 
     print("Resumo da simulação:")
     print(f"Valor original: R$ {total_original:}")
     print(f"Valor com desconto: R$ {total_desconto:}")
     print(f"Valor previsto com {venda_prevista} de venda: R$ {total_previsto:}")
 
-def mostrar_menu():
+def menu():
     print("==== MENU ====")
     print("1 - Ver valor total do estoque")
     print("2 - Simular queima de estoque")
     print("3 - Sair")
-    escolha = input("Escolha uma opção: ")
+    escolha = input("Qual opção deseja: ")
     return escolha
 
 
