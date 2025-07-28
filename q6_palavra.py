@@ -68,7 +68,7 @@ def jogar(palavra):
                 print("Errou o Chute ! Tentativas restantes:", tentativas_chute)
 
         if verificar_todas_descobertas(palavra, letras_descobertas):
-            print("Parabéns! Você acertou todas as letras.Desite da escola vira jogador")
+            print("Parabéns! Você acertou todas as letras.Desiste da escola vira jogador")
             print("Pontuação final:", pontuacao)
             return
 
