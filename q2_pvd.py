@@ -2,8 +2,8 @@ def main():
     itens = []
     sair = 0
 
-    while sair == 0:
-        mostrar_menu()
+    while  == 0:
+        menu()
         opcao = input("Escolha uma opção: ")
 
         if opcao == '1':
@@ -35,7 +35,7 @@ def main():
             print(f"Total da compra: R$ {total_geral:.2f}")
             pagamento = input("Forma de pagamento (PIX, Débito, Crédito): ")
 
-            total_com_desconto = aplicar_desconto(total_geral, pagamento)
+            total_com_desconto = colocar_desconto(total_geral, pagamento)
             print(f"Total com desconto: R$ {total_com_desconto:.2f}")
 
             if pagamento == 'Crédito':
@@ -61,4 +61,4 @@ def main():
             sair = 1
 
         else:
-            print("Opção inválida.")
+            print("Opção não aceita.")
